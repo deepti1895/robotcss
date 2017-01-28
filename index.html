@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<head>
+<link href='https://fonts.googleapis.com/css?family=Poller+One' rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<style>
+
+.robot {
+  position: relative;
+  left: 200px;
+}
+
+.beep {
+  width: 5px;
+  height: 0;
+  border: 5px solid transparent;
+  border-top: 20px solid #000000;
+  border-bottom: 80px solid #000000;
+  position: relative;
+  left: 135px;
+  border-radius: 400px 400px 400px 400px;
+}
+
+@keyframes blink {
+  50% {
+    background: radial-gradient(circle, red 15%, transparent 40%), #cc5;
+  }
+}
+@-webkit-keyframes blink {
+  50% {
+    background: -webkit-radial-gradient(circle, red 15%, transparent 40%), #cc5;
+  }
+}
+@-moz-keyframes blink {
+  50% {
+    background: -moz-radial-gradient(circle, red 15%, transparent 40%), #cc5;
+  }
+}
+.laser {
+  animation: blink .5s infinite;
+  -webkit-animation: blink .5s infinite;
+  -moz-animation: blink .5s infinite;
+}
+.brain {
+  background: radial-gradient(circle, white 15%, transparent 40%), #660066;
+  background: -moz-radial-gradient(circle, white 15%, transparent 40%), #660066;
+  background: -webkit-radial-gradient(circle, white 15%, transparent 40%),#660066 ;
+  background-size: 55px 150px;
+  height: 170px;
+  width: 170px;
+  border-radius: 100px 100px 100px 100px;
+  position: relative;
+  left: 60px;
+}
+.torso {
+  height: 0;
+  width: 140px;
+  border-bottom:  375px solid  #660066;
+  border-top: 300px solid #CC0099;
+  border-left: 75px solid transparent ;
+  border-right: 75px solid transparent;
+  border-radius: 100px 100px 200px 200px;
+
+}
+.left {
+  font-family: 'Poller One', verdana, arial, sans-serif;
+  font-weight: 900;
+  font-size: 250px;
+  color: #000000;
+  transform: rotate(250deg);
+  -webkit-transform: rotate(200deg);
+  -moz-transform: rotate(200deg);
+  position: relative;
+  top: -300px;
+  left: -190px;
+  z-index: -1;
+}
+.right {
+  font-family: 'Poller One', verdana, arial, sans-serif;
+  font-weight: 900;
+  font-size: 250px;
+  color: #000000;
+  transform: scaleY(-1) rotate(20deg);
+  -webkit-transform: scaleY(-1) rotate(20deg);
+  -moz-transform: scaleY(-1) rotate(20deg);
+  position: relative;
+  top: -595px;
+  left: 190px;
+  z-index: -1;
+}
+
+.legs {
+   height: 40px;
+  width: 40px;
+  background: #333333;
+  border-radius: 100px;
+  border: 20px solid #000000;
+  position: relative;
+  left: 99px;
+  top: -5px;
+  z-index: -1;
+
+}
+
+.foot {
+  height: 90px;
+  width: 90px;
+  background: #333333;
+  border-radius: 100px;
+  border: 20px solid #000000;
+  position: relative;
+  left: 80px;
+  top: -7px;
+  z-index: -1;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="robot">
+  <div class="beep"></div>
+  <div class="brain"></div>
+  <div class="torso">
+    <div class="left">j</div>
+    <div class="right">j</div>
+  </div>
+  <div class="legs"></div>
+  <div class="foot"></div>
+</div>
+<button class="flash">laser eyes on/off</button>
+<button class="color">change color!</button>
+<script>
+
+$(".flash").click(function() {
+  $(".brain").toggleClass('laser');
+});
+
+
+$(".color").click(function() {
+
+  var red = Math.floor(Math.random() * 255);
+  var green = Math.floor(Math.random() * 255);
+  var blue = Math.floor(Math.random() * 255);
+  var randomRGBA= 'rgba('+red +','+green +',' +blue +',1)';
+  $("body").css("background", randomRGBA);
+
+  //alert(red + "," + green + "," + blue);
+});
+</script>
+</body>
